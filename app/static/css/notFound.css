@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.not-found {
+  background-color: rgb(39, 39, 39);
+  color: white;
+  height: 100vh;
+  width: 100%;
+}
+
+.not-found-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  width: 100%;
+}
+
+.not-found-wrapper > h2 {
+  font-size: 15rem;
+  margin-top: 0;
+  padding-top: 2rem;
+  margin-left: 2rem;
+}
+
+.not-found-wrapper > p {
+  margin-left: 2rem;
+  align-self: center;
+  font-size: 1.4rem;
+}
