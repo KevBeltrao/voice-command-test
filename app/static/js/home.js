@@ -104,7 +104,7 @@ setInterval(() => {
     divMsgs.innerHTML = '';
     const msgs = JSON.parse(res);
 
-    Object.keys(msgs).reverse().forEach((key) => {
+    Object.keys(msgs).forEach((key) => {
       divMsgs.innerHTML += `
         <li class="item">${msgs[key]}</li>
       `;
