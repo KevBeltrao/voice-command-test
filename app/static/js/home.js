@@ -6,9 +6,11 @@ const recognition = new SpeechRecognition();
 
 recognition.onstart = () => {
   console.log('Speak');
+  btn.style.backgroundColor = 'red';
 }
 
 recognition.onresult = (e) => {
+  btn.style.backgroundColor = '#fff';
   const resultIndex = e.resultIndex;
   const result = e.results[resultIndex][0].transcript;
   content.textContent = result;
@@ -70,3 +72,42 @@ const voice = (msg) => {
 
   window.speechSynthesis.speak(speech);
 }
+
+/******************************************************************************************/
+
+
+const httpGet = (url, callback) => {
+  const request = new XMLHttpRequest();
+  request.open('GET', url, true);
+
+  request.onload = () => {
+    if (request.status >= 200 && request.status < 400) {
+      // Success!
+      callback(request.responseText);
+    } else {
+      // We reached our target server, but it returned an error
+      console.log('server error');
+    }
+  };
+
+  request.onerror = () => {
+    // There was a connection error of some sort
+    console.log('connection error');
+  };
+
+  request.send();
+}
+
+setInterval(() => {
+  httpGet('/msgs', (res) => {
+    const divMsgs = document.querySelector('.list');
+    divMsgs.innerHTML = '';
+    const msgs = JSON.parse(res);
+
+    Object.keys(msgs).reverse().forEach((key) => {
+      divMsgs.innerHTML += `
+        <li class="item">${msgs[key]}</li>
+      `;
+    });
+  });
+}, 100);

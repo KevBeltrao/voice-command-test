@@ -4,14 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>My initial page</title>
   <link rel="stylesheet" href="css/home.css">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
   <section class="home">
     <div class="btn-wrapper">
       <input class="talk" type="submit" value="Click to speak" />
       <p class="written-command"></p>    
+    </div>
+    <div class="todo">
+      <form action="/" method="POST">
+        <label>Item</label>
+        <input autocomplete="off" class="input-text" type="text" name="item" />
+        <label>Validation</label>
+        <input class="input-text" type="password" name="val" />
+        <input class="button" type="submit" value="Send">
+      </form>
+      <ul class="list">
+      </ul>
     </div>
   </section>
   <script src="js/home.js"></script>
