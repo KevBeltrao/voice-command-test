@@ -98,16 +98,20 @@ const httpGet = (url, callback) => {
   request.send();
 }
 
+let test = [];
 setInterval(() => {
   httpGet('/msgs', (res) => {
     const divMsgs = document.querySelector('.list');
-    divMsgs.innerHTML = '';
     const msgs = JSON.parse(res);
 
-    Object.keys(msgs).forEach((key) => {
-      divMsgs.innerHTML += `
-        <li class="item">${msgs[key]}</li>
-      `;
-    });
+    if(Object.keys(msgs).map(key => msgs[key]).length != test.length) {
+      divMsgs.innerHTML = '';
+      test = Object.keys(msgs).map(key => msgs[key]);
+      Object.keys(msgs).forEach((key) => {
+        divMsgs.innerHTML += `
+          <li class="item">${msgs[key]}</li>
+        `;
+      });
+    }
   });
 }, 100);
